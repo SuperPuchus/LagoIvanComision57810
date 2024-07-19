@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>{{ publicacion.titulo }}</h2>
+<p>{{ publicacion.contenido }}</p>
+
+{% if user.is_authenticated and user == publicacion.autor %}
+    <a href="{% url 'eliminar_publicacion' publicacion.pk %}">Eliminar Publicación</a>
+{% endif %}
+
+<h3>Comentarios</h3>
+{% for comentario in publicacion.comentarios.all %}
+    <p>{{ comentario.autor }}: {{ comentario.texto }}</p>
+{% endfor %}
+
+{% if user.is_authenticated %}
+    <h3>Añadir Comentario</h3>
+    <form method="post" action="{% url 'comentar_publicacion' publicacion.pk %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Añadir</button>
+    </form>
+{% else %}
+    <p>Debes <a href="{% url 'login' %}">iniciar sesión</a> para comentar.</p>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Bienvenido a Mi Proyecto</h1>
+<h2>Publicaciones</h2>
+<form method="get" action="{% url 'buscar' %}">
+    <input type="text" name="q" placeholder="Buscar...">
+    <button type="submit">Buscar</button>
+</form>
+<ul>
+    {% for publicacion in publicaciones %}
+        <li>
+            <a href="{% url 'detalle_publicacion' publicacion.pk %}">{{ publicacion.titulo }}</a> 
+            por {{ publicacion.autor }} el {{ publicacion.fecha_creacion }}
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

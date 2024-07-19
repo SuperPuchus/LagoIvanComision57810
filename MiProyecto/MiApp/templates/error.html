@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Bienvenido a Mi Proyecto</h1>
+{% if user.is_authenticated %}
+    <p>¡Hola, {{ user.username }}! Puedes <a href="{% url 'crear_publicacion' %}">crear una publicación</a>.</p>
+{% else %}
+    <p>Debes <a href="{% url 'login' %}">iniciar sesión</a> o <a href="{% url 'registrar' %}">registrarte</a> para crear una publicación.</p>
+{% endif %}
+{% endblock %}

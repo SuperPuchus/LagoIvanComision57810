@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Resultados de la búsqueda para "{{ query }}"</h2>
+<ul>
+    {% for resultado in resultados %}
+        <li>
+            <a href="{% url 'detalle_publicacion' resultado.pk %}">{{ resultado.titulo }}</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
