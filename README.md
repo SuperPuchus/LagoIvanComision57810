@@ -19,11 +19,7 @@ MiProyecto es una aplicación web desarrollada en Django que permite a los usuar
 - Django 5.0.6
 - Git
 
-## Instalación
-
-Sigue estos pasos para configurar y ejecutar la aplicación en tu entorno local:
-
-### 1. Clonar el Repositorio
+## Clonar el Repositorio
 
 ```bash
 git clone https://github.com/SuperPuchus/LagoIvanComision57810.git
